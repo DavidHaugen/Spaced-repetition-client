@@ -30,10 +30,10 @@ class Header extends Component {
 
   renderLoginLink() {
     return (
-      <nav>
-        <Link to='/login'>Login</Link>
+      <nav >
+        <Link to='/login' className="navLink">Login</Link>
         {' '}
-        <Link to='/register'>Sign up</Link>
+        <Link to='/register' className="navLink">Sign up</Link>
       </nav>
     )
   }
@@ -41,14 +41,16 @@ class Header extends Component {
   render() {
     return (
       <header>
-        <h1>
-          <Link to='/'>
-            Spaced repetition
-          </Link>
-        </h1>
-        {TokenService.hasAuthToken()
-          ? this.renderLogoutLink()
+        <div className="flex header">
+          <h1>
+            <Link to='/' className="navLink headerTitle">
+              Spaced repetition
+            </Link>
+          </h1>
+          {TokenService.hasAuthToken()
+            ? this.renderLogoutLink()
           : this.renderLoginLink()}
+        </div>
       </header>
     );
   }

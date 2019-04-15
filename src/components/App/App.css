@@ -1,0 +1,11 @@
+main {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+}
+
+.App{
+  font-family: 'Nunito', sans-serif;
+}

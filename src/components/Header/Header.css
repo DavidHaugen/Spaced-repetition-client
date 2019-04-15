@@ -1,0 +1,29 @@
+header{
+  display: fixed;
+  background-color: #C8D3D5;
+  width: 100vw;
+  padding: 20px;
+}
+
+h1{
+  margin: 0;
+}
+
+.flex{
+  display: flex;
+}
+
+.header{
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navLink{
+  font-size: 20px;
+  text-decoration: none;
+  color: #1c2a43;
+}
+
+.headerTitle{
+  font-size: 34px;
+}

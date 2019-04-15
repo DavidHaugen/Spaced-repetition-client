@@ -45,28 +45,4 @@
   border-radius: 3px;
   padding: 6px 12px 6px 12px;
   cursor: pointer;
-  font-family: 'Nunito', sans-serif;
-  font-size: 20px;
-}
-
-.right{
-  justify-content: flex-end;
-}
-
-.center{
-  justify-content: center;
-}
-
-.signUp{
-  margin-right: 30px;
-  margin-top: 20px;
-  width: 170px;
-  height: 40px;
-}
-
-.alreadyAccountLink{
-  margin-top: 40px;
-  font-size: 20px;
-  text-decoration: none;
-  color: #1c2a43;
 }
