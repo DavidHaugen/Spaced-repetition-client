@@ -14,8 +14,13 @@ main {
   font-family: 'Nunito', sans-serif;
 }
 
-blockquote {
-  margin: 0 0 1em 0;
+h2 {
+  margin: 0 0 0.5em;
+  font-size: 3em;
+}
+
+h3 {
+  margin: 3em 0 1em;
 }
 
 a:link,

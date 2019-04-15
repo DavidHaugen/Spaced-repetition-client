@@ -1,6 +1,7 @@
 header{
   width: 100vw;
   padding: 20px;
+  margin: 0 0 4em 0;
   background-color: #305f72;
   color: #c8e6f5;
 }
@@ -11,7 +12,7 @@ h1{
 }
 
 nav {
-  min-width: 10em;
+  min-width: 13em;
   margin: 0 1em;
 }
 

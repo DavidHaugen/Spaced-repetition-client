@@ -6,6 +6,17 @@ import Button from '../Button/Button'
 import config from '../../config';
 import './Dashboard.css'
 
+function WordListRow(props) {
+  return (
+    <li>
+      <h4>{props.word.original}</h4>
+      <div className="flex-break"></div>
+      <span>correct answer count: {props.word.correct_count}</span> 
+      <span>incorrect answer count: {props.word.incorrect_count}</span>
+    </li>
+  );
+}
+
 class Dashboard extends Component{
   state = {
     error: null,
@@ -28,11 +39,10 @@ class Dashboard extends Component{
   }
 
   generateList(words){
-    // let result = [<li key={-1}><h4>English/{this.context.language.name}</h4><h4>Correct tries/Incorrect tries</h4></li>];
-    let result = []
+    let result = [];
+
     words.forEach((word, key) => {
-      // result.push(<li key={key}><h4>{word.translation}/{word.original}</h4><h4>{word.correct_count}/{word.incorrect_count}</h4></li>)
-      result.push(<li key={key}><h4>{word.original}</h4><span>correct answer count: {word.correct_count}</span> <span>incorrect answer count: {word.incorrect_count}</span></li>)
+      result.push(<WordListRow key={key} word={word} />);
     })
     return <ul className="word-list">{result}</ul>
   }
