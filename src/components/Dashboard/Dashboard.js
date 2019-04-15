@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import TokenService from '../../services/token-service'
 import UserContext from '../../contexts/UserContext'
+import { Link } from 'react-router-dom'
 import Button from '../Button/Button'
 import config from '../../config';
 import './Dashboard.css'
@@ -27,9 +28,11 @@ class Dashboard extends Component{
   }
 
   generateList(words){
-    let result = [<li key={-1}><span>English/{this.context.language.name}</span><span>Correct tries/Incorrect tries</span></li>];
+    // let result = [<li key={-1}><h4>English/{this.context.language.name}</h4><h4>Correct tries/Incorrect tries</h4></li>];
+    let result = []
     words.forEach((word, key) => {
-      result.push(<li key={key}><span>{word.translation}/{word.original}</span><span>{word.correct_count}/{word.incorrect_count}</span></li>)
+      // result.push(<li key={key}><h4>{word.translation}/{word.original}</h4><h4>{word.correct_count}/{word.incorrect_count}</h4></li>)
+      result.push(<li key={key}><h4>{word.original}</h4><span>correct answer count: {word.correct_count}</span> <span>incorrect answer count: {word.incorrect_count}</span></li>)
     })
     return <ul className="word-list">{result}</ul>
   }
@@ -38,13 +41,18 @@ class Dashboard extends Component{
     return (
     <div>
       <h2>{this.context.language ? this.context.language.name : null}</h2>
-      <Button className="btn">
-        Start practicing
-      </Button>
-      <h3>Words to practice: </h3>
+      <Link to='/learn' >
+        <Button className="btn">
+          Start practicing
+        </Button>
+      </Link>
+      <h3>Words to practice</h3>
       <div>
         {this.context.words ? this.generateList(this.context.words) : null}
       </div>
+      <section>
+        <h4>{this.context.language ? `Total correct answers: ${this.context.language.total_score}` : null }</h4>
+      </section>
     </div>
   )}
 }

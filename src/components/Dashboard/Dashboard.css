@@ -5,8 +5,14 @@
 .word-list li{
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
-.word-list li span{
+.word-list li{
   flex: 3;
+}
+
+.word-list h4{
+  min-width: 150px;
+  text-align: left;
 }
