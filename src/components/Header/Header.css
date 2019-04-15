@@ -7,6 +7,7 @@ header{
 
 h1{
   margin: 0;
+  line-height: 1em;
 }
 
 .flex{
@@ -19,11 +20,20 @@ h1{
 }
 
 .navLink{
+  padding: 0 .5em;
   font-size: 20px;
   text-decoration: none;
   color: #1c2a43;
 }
 
 .headerTitle{
-  font-size: 34px;
+  font-size: .75em;
+  max-width: 7em;
+}
+
+@media only screen and (max-width: 425px) {
+  .headerTitle {
+    font-size: 6vw;
+    max-width: 5em;
+  }
 }

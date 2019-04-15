@@ -45,6 +45,8 @@ class LoginForm extends Component {
     const { error } = this.state
     return (
       <div className="formContainer">
+        <h2>Login</h2>
+
         <form
           className='LoginForm inputForm'
           onSubmit={this.handleSubmit}
@@ -77,7 +79,7 @@ class LoginForm extends Component {
             />
           </div>
           <div className="flex center">
-            <Button type='submit' className="textButton login">
+            <Button type='submit' className="textButton btn-login">
               Login
             </Button>
           </div>
