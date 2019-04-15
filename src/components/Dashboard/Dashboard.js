@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import TokenService from '../../services/token-service'
 import UserContext from '../../contexts/UserContext'
 import Button from '../Button/Button'
+import config from '../../config';
 import './Dashboard.css'
 
 class Dashboard extends Component{
@@ -12,7 +13,7 @@ class Dashboard extends Component{
   static contextType = UserContext
 
   componentDidMount(){
-    return fetch('http://localhost:8000/api/language',
+    return fetch(`${config.API_ENDPOINT}/language`,
     {headers: {
         'authorization':`bearer ${TokenService.getAuthToken()}`
       }
