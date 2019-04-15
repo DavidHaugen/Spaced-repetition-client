@@ -1,3 +1,7 @@
+body {
+  background-color: #f2eee0;
+}
+
 main {
   max-width: 800px;
   margin-left: auto;
@@ -16,6 +20,12 @@ blockquote {
 
 nav {
   min-width: 10em;
+}
+
+a:link,
+a:visited {
+  color: inherit;
+  cursor: pointer;
 }
 
 
@@ -45,20 +55,40 @@ nav {
 }
 
 .inputLabel {
-  border: 1px solid #d3dee7;
+  width: 7em;
   margin: 0;
-  padding: 7px;
-  border-right: 1px solid #d3dee7;
+  padding: 7px 12px;
+  border: 2px solid #f1e4e4;
   border-radius: 2px 0 0 2px;
-  background-color: #d3dee7;
-  width: 40%
+  color: #545454;
+  background-color: #d2d2d2;
+  text-align: center;
 }
 
 .inputField {
+  width: 100%;
   margin: 0;
   padding: 9px;
-  border: 2px solid #d3dee7;
+  border: 2px solid #f1e4e4;
   border-left: none;
   border-radius: 0 2px 2px 0;
-  width: 60%;
+  font-size: 1em;
+}
+
+.inputForm footer {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  margin: 1em 0 0;
+  background-color: #00bdaa;
+  color: #ffffff;
+  border: 0;
+  border-radius: 3px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-bottom: 3px solid darkgreen;
+  font-size: 1.2em;
+  font-weight: bold;
 }

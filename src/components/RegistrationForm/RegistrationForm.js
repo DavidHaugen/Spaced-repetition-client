@@ -85,15 +85,11 @@ class RegistrationForm extends Component {
             />
           </div>
           <footer>
-            <div className="flex right">
-              <Button type='submit' className="textButton signUp">
-                Sign up
-              </Button>
-            </div>
-            {' '}
-            <div className="alreadyAccountLink" >
-              <Link to='/login' className="alreadyAccountLink" >Already have an account?</Link>
-            </div>
+            <Button type='submit' className="btn btn-register">
+              Sign up
+            </Button>
+
+            <Link to='/login' className="alreadyAccountLink" >Already have an account?</Link>
           </footer>
         </form>
       </div>

@@ -79,7 +79,7 @@ class LoginForm extends Component {
             />
           </div>
           <div className="flex center">
-            <Button type='submit' className="textButton btn-login">
+            <Button type='submit' className="btn btn-login">
               Login
             </Button>
           </div>

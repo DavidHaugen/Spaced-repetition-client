@@ -1,8 +1,8 @@
 header{
-  display: fixed;
-  background-color: #C8D3D5;
   width: 100vw;
   padding: 20px;
+  background-color: #305f72;
+  color: #c8e6f5;
 }
 
 h1{

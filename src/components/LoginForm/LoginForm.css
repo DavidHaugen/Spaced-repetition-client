@@ -1,13 +1,3 @@
-.textButton{
-  margin: 1em 0 0;
-  background-color: #dce3e9;
-  color: #05182a;
-  border: 1px solid #0A0908; 
-  border-radius: 3px;
-  padding: 6px 12px 6px 12px;
-  cursor: pointer;
-}
-
 .btn-login {
   padding: 7px 15px;
 }
