@@ -1,0 +1,12 @@
+.word-list{
+  list-style: none;
+}
+
+.word-list li{
+  display: flex;
+  justify-content: space-between;
+}
+
+.word-list li span{
+  flex: 3;
+}
