@@ -28,6 +28,7 @@ class Learn extends Component{
     return (
     <div>
       <h2>Translate the word:</h2><span>{this.context.nextWord ? this.context.nextWord.nextWord : null}</span>
+      <p>Your total score is: {this.context.nextWord ? this.context.nextWord.totalScore : null}</p>
       <main>
       <form>
         <label htmlFor="learn-guess-input">What's the translation for this word?</label>
@@ -36,7 +37,6 @@ class Learn extends Component{
       </form>
       <p>You have answered this word correctly {this.context.nextWord ? this.context.nextWord.wordCorrectCount : null} times.</p>
       <p>You have answered this word incorrectly {this.context.nextWord ? this.context.nextWord.wordIncorrectCount : null} times.</p>
-      <p>Your total score is: {this.context.nextWord ? this.context.nextWord.totalScore : null}</p>
     </main>
     </div>
    
