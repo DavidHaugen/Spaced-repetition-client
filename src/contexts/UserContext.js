@@ -8,6 +8,7 @@ const UserContext = React.createContext({
   error: null,
   language: null,
   words: null,
+  nextWord: null,
 
   setError: () => {},
   clearError: () => {},
@@ -16,6 +17,7 @@ const UserContext = React.createContext({
   processLogout: () => {},
   setLanguage: () => {},
   setWords: () => {},
+  setNextWord: () => {},
 })
 
 export default UserContext
@@ -23,7 +25,7 @@ export default UserContext
 export class UserProvider extends Component {
   constructor(props) {
     super(props)
-    const state = { user: {}, error: null, language: null, words: null}
+    const state = { user: {}, error: null, language: null, words: null, nextWord: null}
 
     const jwtPayload = TokenService.parseAuthToken()
 
@@ -71,6 +73,10 @@ export class UserProvider extends Component {
 
   setUser = user => {
     this.setState({ user })
+  }
+
+  setNextWord = nextWord => {
+    this.setState({nextWord})
   }
 
   processLogin = authToken => {
@@ -127,6 +133,8 @@ export class UserProvider extends Component {
       language: this.state.language,
       setWords: this.setWords,
       words: this.state.words,
+      nextWord: this.state.nextWord,
+      setNextWord: this.setNextWord
     }
     return (
       <UserContext.Provider value={value}>
