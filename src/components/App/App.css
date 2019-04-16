@@ -3,9 +3,11 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #f2eee0;
+  background-color: #4e70c1;
   font-family: 'Work Sans';
 }
+
+/* F0CEA0 #2f5fd2 BBB6DF E5B181 */
 
 main {
   max-width: 800px;
@@ -15,23 +17,20 @@ main {
 }
 
 h2 {
-  width: 100vw;
-  margin: 0;
-  padding: 1em 0 .5em;
-  position: absolute;
-  left: 0;
-  font-size: 4em;
-  font-family: 'Lora';
-  background-color: #13495f;
-  color: #fff;
+  margin: 1em 0 0.25em;
+  font-size: 2.5em;
+  color: #f7f7f7;
 }
 
 h3 {
   margin: 3em auto 1em;
   padding: 0 0 0.75em;
   max-width: 80%;
+  border-bottom: 1px solid #e4e4e4;
+  color: #f7f7f7;
   font-family: 'Lora';
-  border-bottom: 1px solid #c7c7c7;
+  font-variant: all-small-caps;
+  font-size: 2em;
 }
 
 a:link,
@@ -67,25 +66,34 @@ a:visited {
 }
 
 .inputLabel {
-  width: 11em;
+  width: 10em;
   margin: 0;
-  padding: 7px 12px;
-  border: 2px solid #f1e4e4;
-  border-radius: 2px 0 0 2px;
-  color: #545454;
-  background-color: #d2d2d2;
-  text-align: center;
-  font-size: 0.7em;
+  padding: 7px 15px;
+  border-radius: 4px 0 0 4px;
+  color: #828282;
+  background-color: #f7f7f7;
+  font-size: 0.9em;
+  line-height: 1.9em;
 }
 
 .inputField {
   width: 100%;
   margin: 0;
-  padding: 3px 7px;
-  border: 2px solid #f1e4e4;
-  border-left: none;
-  border-radius: 0 2px 2px 0;
-  font-size: 1em;
+  padding: 7px 12px;
+  border: 3px solid transparent;
+  border-left: 0;
+  border-bottom-color: #f7f7f7;
+  font-size: 1.2em;
+  font-weight: bold;
+  background: transparent;
+  color: #f7f7f7;
+  transition: all .25s;
+}
+
+.inputField:focus {
+  border-color: #f7f7f7;
+  background-color: #51679c;
+  outline: none;
 }
 
 .inputForm footer {
@@ -95,21 +103,34 @@ a:visited {
 
 .btn {
   margin: 1em 0 0;
-  background-color: #00bdaa;
-  color: #ffffff;
+  padding: 10px 20px;
+  background-color: #ffc64d;
+  color: #4a4a4a;
   border: 0;
   border-radius: 3px;
-  padding: 10px 20px;
   cursor: pointer;
-  border-bottom: 3px solid darkgreen;
   font-size: 1.2em;
   font-weight: bold;
+  box-shadow: 5px 6px 0px 1px goldenrod;
+  -webkit-transition: all .4s;
+  transition: all .4s;
+}
+
+.btn:hover {
+  background-color: #fff5d9;
+  box-shadow: 10px 11px 0px 1px #deb41f;
+}
+
+.alert-danger {
+  color: #ca1111;
+  padding: 0.3em;
 }
 
 
 
 @media only screen and (max-width: 425px) {
   h2 {
+    margin: 1em 0 0.25em;
     font-size: 15vw;
   }
 }

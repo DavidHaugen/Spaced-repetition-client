@@ -17,7 +17,7 @@ class RegistrationRoute extends Component {
     return (
       <section className="registration-container">
         <div className='tagline'>
-          <p>Practice learning a language with the spaced reptition revision technique.</p>
+          <p>Practice learning a language with the spaced repetition revision technique.</p>
         </div>
         <RegistrationForm
           onRegistrationSuccess={this.handleRegistrationSuccess}

@@ -1,4 +1,5 @@
-.btn-login {
+.btn.btn-login {
+  margin: 2.5em 0 0 0;
   padding: 7px 15px;
 }
 
