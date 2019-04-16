@@ -4,27 +4,42 @@
 }
 
 .word-list li{
+  margin: 2em 0;
+  padding: .5em 1.2em;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex: 3;
   flex-wrap: wrap;
+  background-color: #d0aa4726;
 }
 
 .word-list h4{
-  margin: 2em 0 0.25em;
+  margin: 0;
   min-width: 150px;
   text-align: left;
+  font-size: 2em;
+  font-family: 'Lora';
+}
+
+.word-list span { font-size: 1em }
+
+.word-list div {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
 }
 
 .word-list li span:nth-of-type(1) { color: green }
 .word-list li span:nth-of-type(2) { color: red }
 
+.header-stretch { height: 13em }
 
 
-
-.flex-break { width: 100%; display: none }
 
 @media only screen and (max-width: 425px) {
-  .flex-break { display: block }
+  .word-list div {
+    margin: 0.5em 0 0;
+    text-align: left;
+  }
 }

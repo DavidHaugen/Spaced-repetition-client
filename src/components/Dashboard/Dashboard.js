@@ -10,9 +10,10 @@ function WordListRow(props) {
   return (
     <li>
       <h4>{props.word.original}</h4>
-      <div className="flex-break"></div>
-      <span>correct answer count: {props.word.correct_count}</span> 
-      <span>incorrect answer count: {props.word.incorrect_count}</span>
+      <div>
+        <span>correct answer count: {props.word.correct_count}</span> 
+        <span>incorrect answer count: {props.word.incorrect_count}</span>
+      </div>
     </li>
   );
 }
@@ -48,9 +49,9 @@ class Dashboard extends Component{
   }
 
   render(){
-    return (
-    <div>
+    return <>
       <h2>{this.context.language ? this.context.language.name : null}</h2>
+      <div className="header-stretch"></div>
       <Link to='/learn' >
         <Button className="btn">
           Start practicing
@@ -63,8 +64,7 @@ class Dashboard extends Component{
       <section>
         <h4>{this.context.language ? `Total correct answers: ${this.context.language.total_score}` : null }</h4>
       </section>
-    </div>
-  )}
+  </>}
 }
 
 export default Dashboard
