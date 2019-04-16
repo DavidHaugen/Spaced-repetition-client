@@ -81,6 +81,7 @@ a:visited {
   margin: 0;
   padding: 7px 12px;
   border: 3px solid transparent;
+  border-radius: 0 5px 5px 0;
   border-left: 0;
   border-bottom-color: #f7f7f7;
   font-size: 1.2em;
