@@ -3,7 +3,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #4e70c1;
+  background-color: #0c3086;
   font-family: 'Work Sans';
 }
 
@@ -16,6 +16,11 @@ main {
   text-align: center;
 }
 
+h1 {
+  margin: 0;
+  line-height: 0.75em;
+}
+
 h2 {
   margin: 1em 0 0.25em;
   font-size: 2.5em;
@@ -26,8 +31,8 @@ h3 {
   margin: 3em auto 1em;
   padding: 0 0 0.75em;
   max-width: 80%;
-  border-bottom: 1px solid #e4e4e4;
-  color: #f7f7f7;
+  border-bottom: 1px solid #5366c5;
+  color: #5366c5;
   font-family: 'Lora';
   font-variant: all-small-caps;
   font-size: 2em;

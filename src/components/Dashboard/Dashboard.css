@@ -10,7 +10,7 @@
   align-items: center;
   flex: 3;
   flex-wrap: wrap;
-  background-color: rgba(255, 255, 255, 0.23);
+  background-color: rgba(255, 255, 255, 0.06);
 }
 
 .word-list h4{
@@ -41,20 +41,23 @@
 .full-header {
   width: 100%;
   margin: 0;
-  padding: .75em 0;
+  padding: 0.5em 0;
   position: absolute;
   left: 0;
-  font-size: 4em;
+  font-size: 6em;
   font-family: 'Lora';
   background-color: #053f5e;
-  background: url(/img/fish.png);
-  color: #fff;
-  border-bottom: 10px solid #4061af;
+  background: url('/img/stars.jpg');
+  color: #ffffff;
+  border-bottom: 10px solid #0535a7;
+  font-variant: all-small-caps;
+  text-shadow: 0px 5px 0px #2f647d;
 }
 
-.header-stretch { height: 13em }
+.header-stretch { height: 16em }
 
-.btn-learn {
+.btn.btn-learn {
+  margin: 35% 0 0;
   padding: .75em 1.25em;
 }
 
@@ -66,6 +69,14 @@
 
 
 @media only screen and (max-width: 425px) {
+  .full-header {
+    font-size: 20vw;
+  }
+
+  .btn.btn-learn {
+    margin: 60% 0 0;
+  }
+
   .word-list div {
     margin: 0 0 .5em .5em;
     text-align: left;

@@ -1,23 +1,22 @@
 header{
   padding: 20px;
-  background-color: #ffffff;
-  color: #ff5a5a;
-  border-bottom: 10px solid #d2d2d2;
-}
-
-h1{
-  margin: 0;
-  line-height: 1em;
+  background-color: #e9f0ff;
+  color: #505e6b;
+  border-bottom: 10px solid #8d9ea6;
 }
 
 nav {
   min-width: 13em;
-  margin: 0 1em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   text-align: right;
 }
 
-nav span {
+nav p {
   margin: 0 20px 0 0;
+  max-width: 10em;
+  overflow: hidden;
 }
 
 .flex{
@@ -31,6 +30,8 @@ nav span {
   margin: 0 auto;
 }
 
+.header-content > * { flex: 3 }
+
 .navLink{
   padding: 0 .5em;
   font-size: 20px;
@@ -39,7 +40,7 @@ nav span {
 }
 
 .navLogout {
-  border: 3px solid #ececec;
+  border: 3px solid #d4ddde;
   padding: .5em 1em;
   border-radius: 5px;
 }
@@ -53,7 +54,9 @@ nav span {
   width: 3em;
   height: 3em;
   background-image: url('/img/norway.png');
-  background-size: cover;
+  background-size: 15% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 @media only screen and (max-width: 425px) {
@@ -63,7 +66,7 @@ nav span {
   }
 
   .headerTitle {
-    font-size: 6vw;
+    font-size: 5vw;
     max-width: 5em;
   }
 }

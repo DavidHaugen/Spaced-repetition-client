@@ -51,9 +51,8 @@ class Dashboard extends Component{
   render(){
     return <>
       <h2 className="full-header">{this.context.language ? this.context.language.name : null}</h2>
-      <div className="header-stretch"></div>
       <Link to='/learn' >
-        <Button className="btn">
+        <Button className="btn btn-learn">
           Start practicing
         </Button>
       </Link>
