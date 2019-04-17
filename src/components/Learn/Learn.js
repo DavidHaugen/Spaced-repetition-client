@@ -6,7 +6,12 @@ import config from '../../config';
 class Learn extends Component{
   state = {
     error: null,
-    response: {},
+  }
+
+  constructor(props) {
+    super(props);
+
+    this.submitForm = this.submitForm.bind(this);
   }
 
   static contextType = UserContext
@@ -37,29 +42,37 @@ class Learn extends Component{
     })
       .then(res => res.json())
       .then(json => {
-        this.context.setNextWord(json.nextWord);
-        this.setState({response: json});
+        this.context.setNextWord(json);
+        document.getElementById('learn-guess-input').value = '';
       });
+  }
+
+  getResponseText() {
+    if(this.context.nextWord && typeof this.context.nextWord.isCorrect !== 'undefined') {
+      if(this.context.nextWord.isCorrect) {
+        return 'Congratulations!';
+      } else {
+        return 'Wrong!!';
+      }
+    }
   }
 
   render(){
     return (
-    <div>
-      <h2>Translate the word:</h2><span>{this.context.nextWord ? this.context.nextWord.nextWord : null}</span>
-      <p>Your total score is: {this.context.nextWord ? this.context.nextWord.totalScore : null}</p>
-      <main>
-      <form onSubmit={this.submitForm}>
-        <label htmlFor="learn-guess-input">What's the translation for this word?</label>
-        <input id="learn-guess-input" name="userinput" type="text" required ></input>
-        <button type="submit">Submit your answer</button>
-      </form>
-      <p>You have answered this word correctly {this.context.nextWord ? this.context.nextWord.wordCorrectCount : null} times.</p>
-      <p>You have answered this word incorrectly {this.context.nextWord ? this.context.nextWord.wordIncorrectCount : null} times.</p>
-    </main>
-    </div>
-   
-
-  )}
+      <div>
+        <p>{this.getResponseText()}</p>
+        <h2>Translate the word:</h2><span>{this.context.nextWord ? this.context.nextWord.nextWord : null}</span>
+        <p className="DisplayScore">Your total score is: {this.context.nextWord ? this.context.nextWord.totalScore : null}</p>
+        <form onSubmit={this.submitForm}>
+          <label htmlFor="learn-guess-input">What's the translation for this word?</label>
+          <input id="learn-guess-input" name="userinput" type="text" required ></input>
+          <button type="submit">Submit your answer</button>
+        </form>
+        <p>You have answered this word correctly {this.context.nextWord ? this.context.nextWord.wordCorrectCount : null} times.</p>
+        <p>You have answered this word incorrectly {this.context.nextWord ? this.context.nextWord.wordIncorrectCount : null} times.</p>
+      </div>
+    );
+  }
 }
 
 export default Learn
