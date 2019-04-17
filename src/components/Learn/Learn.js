@@ -24,13 +24,14 @@ class Learn extends Component{
     })
     .then(res => res.json())
     .then(res => {
-      this.context.setNextWord(res)
+      this.context.setNextWord(res);
     })
     .catch(err => this.setState({error: err}));
   }
 
   submitForm(e) {
     e.preventDefault();
+    this.context.setCurrWord(this.context.nextWord)
 
     fetch(`${config.API_ENDPOINT}/language/guess`, {
       method: 'POST',
@@ -48,11 +49,22 @@ class Learn extends Component{
   }
 
   getResponseText() {
-    if(this.context.nextWord && typeof this.context.nextWord.isCorrect !== 'undefined') {
+    if(this.context.nextWord)
+     if(typeof this.context.nextWord.isCorrect !== 'undefined') {
       if(this.context.nextWord.isCorrect) {
-        return 'Congratulations!';
+        return 'You were correct! :D';
       } else {
-        return 'Wrong!!';
+        return 'Good try, but not quite right :(';
+      }
+    }
+  }
+
+  getResponseFeedback(){
+    let translation = this.context.words && this.context.currWord ? this.context.words.find(word => word.original === this.context.currWord.nextWord) : null;
+    console.log(translation);
+    if(this.context.nextWord && typeof this.context.nextWord.isCorrect !== 'undefined'){
+      if(this.context.nextWord.isCorrect){
+        return `The correct translation for ${this.context.currWord.nextWord} was ${translation} and you chose ${this.context.nextWord}`
       }
     }
   }
@@ -60,9 +72,14 @@ class Learn extends Component{
   render(){
     return (
       <div>
-        <p>{this.getResponseText()}</p>
-        <h2>Translate the word:</h2><span>{this.context.nextWord ? this.context.nextWord.nextWord : null}</span>
-        <p className="DisplayScore">Your total score is: {this.context.nextWord ? this.context.nextWord.totalScore : null}</p>
+        <h2>{this.getResponseText()}</h2>
+        <h3>Translate the word:</h3><span>{this.context.nextWord ? this.context.nextWord.nextWord : null}</span>
+        <div className="DisplayScore">
+          <p>Your total score is: {this.context.nextWord ? this.context.nextWord.totalScore : null}</p>
+        </div>
+        <div className="DisplayFeedback">
+          <p>{this.getResponseFeedback()}</p>
+        </div>
         <form onSubmit={this.submitForm}>
           <label htmlFor="learn-guess-input">What's the translation for this word?</label>
           <input id="learn-guess-input" name="userinput" type="text" required ></input>

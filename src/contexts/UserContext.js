@@ -8,8 +8,9 @@ const UserContext = React.createContext({
   error: null,
   language: null,
   words: null,
-  nextWord: null,
+  nextWord: {},
   totalScore: null,
+  currWord: {},
 
   setError: () => {},
   clearError: () => {},
@@ -20,6 +21,7 @@ const UserContext = React.createContext({
   setWords: () => {},
   setNextWord: () => {},
   setTotalScore: () => {},
+  setCurrWord: () => {}
 })
 
 export default UserContext
@@ -27,7 +29,7 @@ export default UserContext
 export class UserProvider extends Component {
   constructor(props) {
     super(props)
-    const state = { user: {}, error: null, language: null, words: null, nextWord: null, totalScore: null}
+    const state = { user: {}, error: null, language: null, words: null, nextWord: null, totalScore: null, currWord: null}
 
     const jwtPayload = TokenService.parseAuthToken()
 
@@ -85,6 +87,10 @@ export class UserProvider extends Component {
     this.setState({totalScore})
   }
 
+  setCurrWord = currWord => {
+    this.setState({currWord})
+  }
+
   processLogin = authToken => {
     TokenService.saveAuthToken(authToken)
     const jwtPayload = TokenService.parseAuthToken()
@@ -132,6 +138,7 @@ export class UserProvider extends Component {
       error: this.state.error,
       totalScore: this.state.totalScore,
       setError: this.setError,
+      currWord: this.state.currWord,
       clearError: this.clearError,
       setUser: this.setUser,
       processLogin: this.processLogin,
@@ -143,6 +150,7 @@ export class UserProvider extends Component {
       nextWord: this.state.nextWord,
       setNextWord: this.setNextWord,
       setTotalScore: this.setTotalScore,
+      setCurrWord: this.setCurrWord
     }
     return (
       <UserContext.Provider value={value}>
