@@ -6,6 +6,7 @@ import config from '../../config';
 class Learn extends Component{
   state = {
     error: null,
+    response: {},
   }
 
   static contextType = UserContext
@@ -23,6 +24,23 @@ class Learn extends Component{
     .catch(err => this.setState({error: err}));
   }
 
+  submitForm(e) {
+    e.preventDefault();
+
+    fetch(`${config.API_ENDPOINT}/language/guess`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'authorization':`bearer ${TokenService.getAuthToken()}`
+      },
+      body: JSON.stringify({guess: e.target.userinput.value})
+    })
+      .then(res => res.json())
+      .then(json => {
+        this.context.setNextWord(json.nextWord);
+        this.setState({response: json});
+      });
+  }
 
   render(){
     return (
@@ -30,9 +48,9 @@ class Learn extends Component{
       <h2>Translate the word:</h2><span>{this.context.nextWord ? this.context.nextWord.nextWord : null}</span>
       <p>Your total score is: {this.context.nextWord ? this.context.nextWord.totalScore : null}</p>
       <main>
-      <form>
+      <form onSubmit={this.submitForm}>
         <label htmlFor="learn-guess-input">What's the translation for this word?</label>
-        <input id="learn-guess-input" type="text" required ></input>
+        <input id="learn-guess-input" name="userinput" type="text" required ></input>
         <button type="submit">Submit your answer</button>
       </form>
       <p>You have answered this word correctly {this.context.nextWord ? this.context.nextWord.wordCorrectCount : null} times.</p>
