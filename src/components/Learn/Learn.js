@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import TokenService from '../../services/token-service'
 import UserContext from '../../contexts/UserContext'
 import config from '../../config';
+import './Learn.css';
 
 class Learn extends Component{
   state = {
@@ -51,9 +52,17 @@ class Learn extends Component{
       .then(res => res.json())
       .then(json => {
         this.context.setNextWord(json);
+        this.showFeedback();
         document.getElementById('learn-guess-input').value = '';
       });
     }
+  }
+
+  showFeedback() {
+    const el = document.getElementById('feedback-overlay');
+    el.classList.remove('hidden');
+
+    setTimeout(() => {el.classList.add('hidden')}, 5000);
   }
 
   getResponseText() {
@@ -105,8 +114,8 @@ class Learn extends Component{
 
   render(){
     return (
-      <div>
-        <h3>{this.getResponseText()}</h3>
+      <div className="learn-page">
+        <h3 id="feedback-overlay" className="hidden">{this.getResponseText()}</h3>
         <h2>Translate the word:</h2><span>{this.context.nextWord ?  this.state.onResults ? this.context.currWord.nextWord : this.context.nextWord.nextWord : null}</span>
         {/* <h2>Translate the word:</h2><span>{this.generateCurrentWord()}</span> */}
         <div className="DisplayScore">
@@ -118,11 +127,11 @@ class Learn extends Component{
         <form onSubmit={this.submitForm}>
           <label htmlFor="learn-guess-input">What's the translation for this word?</label>
           <input id="learn-guess-input" name="userinput" type="text" required={this.state.onResults ? false : true} ></input>
-          <button type="submit">{this.getButtonText()}</button>
+          <button className="btn" type="submit">{this.getButtonText()}</button>
           {/* {this.generateButton()} */}
         </form>
-        <p>You have answered this word correctly {this.context.nextWord ? this.context.nextWord.wordCorrectCount : null} times.</p>
-        <p>You have answered this word incorrectly {this.context.nextWord ? this.context.nextWord.wordIncorrectCount : null} times.</p>
+        <p className="word-count">You have answered this word correctly {this.context.nextWord ? this.context.nextWord.wordCorrectCount : null} times.</p>
+        <p className="word-count">You have answered this word incorrectly {this.context.nextWord ? this.context.nextWord.wordIncorrectCount : null} times.</p>
       </div>
     );
   }
