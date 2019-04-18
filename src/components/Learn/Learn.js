@@ -125,7 +125,7 @@ class Learn extends Component{
       <div className="learn-page">
         {this.state.loading ? <div id="loading-overlay"><Loader /></div> : ''}
         <h2>Translate the word:</h2><span>{this.context.nextWord ?  this.state.onResults ? this.context.currWord.nextWord : this.context.nextWord.nextWord : null}</span>
-        <h3 id="feedback-overlay" className="hidden" onClick={this.clearFeedback}>{this.getResponseText()}</h3>
+        <h3 id="feedback-overlay" className="hidden" onClick={this.clearFeedback} aria-live="polite">{this.getResponseText()}</h3>
         <div className="DisplayScore">
           <p>Your total score is: {this.context.nextWord ? this.context.nextWord.totalScore : null}</p>
         </div>

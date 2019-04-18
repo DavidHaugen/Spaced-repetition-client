@@ -48,7 +48,7 @@ class RegistrationForm extends Component {
         <form className="inputForm"
           onSubmit={this.handleSubmit}
         >
-          <div role='alert'>
+          <div role='alert' aria-live="polite">
             {error && <p>{error}</p>}
           </div>
           <div className="formField">

@@ -27,7 +27,7 @@ class Header extends Component {
 
   renderLoginLink() {
     return (
-      <nav >
+      <nav>
         <Link to='/login' className="navLink">Login</Link>
         {' '}
         <Link to='/register' className="navLink">Sign up</Link>
@@ -37,7 +37,7 @@ class Header extends Component {
 
   render() {
     return (
-      <header>
+      <header role="navigation">
         <div className="flex header-content">
           <h1>
             <Link to='/' className="navLink headerTitle">
