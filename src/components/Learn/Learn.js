@@ -130,7 +130,7 @@ class Learn extends Component{
         </div>
         <form onSubmit={this.submitForm}>
           <label htmlFor="learn-guess-input" className={this.state.onResults ? 'hidden' : ''}>What's the translation for this word?</label>
-          <input id="learn-guess-input" name="userinput" type="text" required={this.state.onResults ? false : true} className={this.state.onResults ? 'hidden' : ''}></input>
+          <input id="learn-guess-input" name="userinput" type="text" required={this.state.onResults ? false : true} className={this.state.onResults ? 'hidden' : ''} maxLength="25"></input>
           <button className="btn" type="submit">{this.getButtonText()}</button>
           {/* {this.generateButton()} */}
         </form>

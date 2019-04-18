@@ -19,6 +19,8 @@ nav p {
   overflow: hidden;
 }
 
+nav span { padding: 0 .75em }
+
 .flex{
   display: flex;
 }
