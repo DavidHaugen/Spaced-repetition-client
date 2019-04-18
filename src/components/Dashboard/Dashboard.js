@@ -4,6 +4,7 @@ import UserContext from '../../contexts/UserContext'
 import { Link } from 'react-router-dom'
 import Button from '../Button/Button'
 import config from '../../config';
+import {Loader} from '../Utils/Utils';
 import './Dashboard.css'
 
 function WordListRow(props) {
@@ -21,6 +22,7 @@ function WordListRow(props) {
 class Dashboard extends Component{
   state = {
     error: null,
+    loading: true,
   }
 
   static contextType = UserContext
@@ -35,6 +37,7 @@ class Dashboard extends Component{
     .then(res => {
       this.context.setLanguage(res.language)
       this.context.setWords(res.words)
+      this.setState({loading: false});
     })
     .catch(err => this.setState({error: err}));
   }
@@ -48,8 +51,8 @@ class Dashboard extends Component{
     return <ul className="word-list">{result}</ul>
   }
 
-  render(){
-    return <>
+  render() {
+    const jsx = <>
       <h2 className="full-header">{this.context.language ? this.context.language.name : null}</h2>
       <Link to='/learn' >
         <Button className="btn btn-learn">
@@ -63,7 +66,10 @@ class Dashboard extends Component{
       <section className="total-correct">
         <h4>{this.context.language ? `Total correct answers: ${this.context.language.total_score}` : null }</h4>
       </section>
-  </>}
+    </>;
+
+    return this.state.loading ? <Loader /> : jsx;
+  }
 }
 
 export default Dashboard

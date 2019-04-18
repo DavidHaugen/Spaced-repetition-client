@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import LoginForm from '../../components/LoginForm/LoginForm'
+import { Loader } from '../../components/Utils/Utils';
 
 class LoginRoute extends Component {
   static defaultProps = {
@@ -9,6 +10,14 @@ class LoginRoute extends Component {
     },
   }
 
+  state = {
+    loading: false,
+  }
+
+  toggleLoading = () => {
+    this.setState({loading: !this.state.loading})
+  }
+
   handleLoginSuccess = () => {
     const { location, history } = this.props
     const destination = (location.state || {}).from || '/'
@@ -16,13 +25,16 @@ class LoginRoute extends Component {
   }
 
   render() {
-    return (
+    const jsx = (
       <section className="login-container">
         <LoginForm
+          toggleLoading={this.toggleLoading}
           onLoginSuccess={this.handleLoginSuccess}
         />
       </section>
     );
+
+    return this.state.loading ? <Loader /> : jsx;
   }
 }
 

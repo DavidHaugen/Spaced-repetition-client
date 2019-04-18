@@ -80,6 +80,22 @@
 .word-count:nth-of-type(2) { color: #ffbebe }
 
 
+#loading-overlay {
+  min-width: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #122758;
+}
+
+#loading-overlay .lds-ripple { margin-top: 0 }
+
 
 @media only screen and (max-width: 425px) {
   .learn-page h2 {

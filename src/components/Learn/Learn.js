@@ -2,12 +2,14 @@ import React, {Component} from 'react'
 import TokenService from '../../services/token-service'
 import UserContext from '../../contexts/UserContext'
 import config from '../../config';
+import {Loader} from '../Utils/Utils';
 import './Learn.css';
 
 class Learn extends Component{
   state = {
     error: null,
-    onResults: false
+    onResults: false,
+    loading: true,
   }
 
   constructor(props) {
@@ -27,6 +29,7 @@ class Learn extends Component{
     .then(res => res.json())
     .then(res => {
       this.context.setNextWord(res);
+      this.setState({loading: false});
     })
     .catch(err => this.setState({error: err}));
   }
@@ -39,7 +42,7 @@ class Learn extends Component{
     } else {
     this.context.setCurrWord(this.context.nextWord)
     this.context.setGuess(e.target.userinput.value)
-    this.setState({onResults: !this.state.onResults})
+    this.setState({onResults: !this.state.onResults, loading: true})
 
     fetch(`${config.API_ENDPOINT}/language/guess`, {
       method: 'POST',
@@ -53,6 +56,7 @@ class Learn extends Component{
       .then(json => {
         this.context.setNextWord(json);
         this.showFeedback();
+        this.setState({loading: false});
         document.getElementById('learn-guess-input').value = '';
       });
     }
@@ -119,6 +123,7 @@ class Learn extends Component{
   render(){
     return (
       <div className="learn-page">
+        {this.state.loading ? <div id="loading-overlay"><Loader /></div> : ''}
         <h3 id="feedback-overlay" className="hidden" onClick={this.clearFeedback}>{this.getResponseText()}</h3>
         <h2>Translate the word:</h2><span>{this.context.nextWord ?  this.state.onResults ? this.context.currWord.nextWord : this.context.nextWord.nextWord : null}</span>
         {/* <h2>Translate the word:</h2><span>{this.generateCurrentWord()}</span> */}

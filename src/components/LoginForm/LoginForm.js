@@ -12,14 +12,16 @@ class LoginForm extends Component {
 
   static contextType = UserContext
 
-  state = { error: null }
+  state = {
+    error: null,
+  }
 
   firstInput = React.createRef()
 
   handleSubmit = ev => {
     ev.preventDefault()
     const { username, password } = ev.target
-
+    this.props.toggleLoading();
     this.setState({ error: null })
 
     AuthApiService.postLogin({
@@ -33,6 +35,7 @@ class LoginForm extends Component {
         this.props.onLoginSuccess()
       })
       .catch(res => {
+        this.props.toggleLoading();
         this.setState({ error: res.error })
       })
   }

@@ -16,6 +16,7 @@ class RegistrationForm extends Component {
 
   handleSubmit = ev => {
     ev.preventDefault()
+    this.props.toggleLoading(); // set loading to true
     const { name, username, password } = ev.target
     AuthApiService.postUser({
       name: name.value,
@@ -29,6 +30,7 @@ class RegistrationForm extends Component {
         this.props.onRegistrationSuccess()
       })
       .catch(res => {
+        this.props.toggleLoading();
         this.setState({ error: res.error })
       })
   }
