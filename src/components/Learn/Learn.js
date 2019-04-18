@@ -124,9 +124,8 @@ class Learn extends Component{
     return (
       <div className="learn-page">
         {this.state.loading ? <div id="loading-overlay"><Loader /></div> : ''}
-        <h3 id="feedback-overlay" className="hidden" onClick={this.clearFeedback}>{this.getResponseText()}</h3>
         <h2>Translate the word:</h2><span>{this.context.nextWord ?  this.state.onResults ? this.context.currWord.nextWord : this.context.nextWord.nextWord : null}</span>
-        {/* <h2>Translate the word:</h2><span>{this.generateCurrentWord()}</span> */}
+        <h3 id="feedback-overlay" className="hidden" onClick={this.clearFeedback}>{this.getResponseText()}</h3>
         <div className="DisplayScore">
           <p>Your total score is: {this.context.nextWord ? this.context.nextWord.totalScore : null}</p>
         </div>
@@ -137,7 +136,6 @@ class Learn extends Component{
           <label htmlFor="learn-guess-input" className={this.state.onResults ? 'hidden' : ''}>What's the translation for this word?</label>
           <input id="learn-guess-input" name="userinput" type="text" required={this.state.onResults ? false : true} className={this.state.onResults ? 'hidden' : ''} maxLength="25"></input>
           <button className="btn" type="submit">{this.getButtonText()}</button>
-          {/* {this.generateButton()} */}
         </form>
         <p className="word-count">You have answered this word correctly {this.context.nextWord ? this.context.nextWord.wordCorrectCount : null} times.</p>
         <p className="word-count">You have answered this word incorrectly {this.context.nextWord ? this.context.nextWord.wordIncorrectCount : null} times.</p>
