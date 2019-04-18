@@ -92,6 +92,14 @@
   right: 0;
   bottom: 0;
   background-color: #122758;
+  transition: all .25s;
+  opacity: 1;
+}
+
+#feedback-overlay.invisible {
+  pointer-events: none;
+  opacity: 0;
+  transition: all .5s;
 }
 
 #loading-overlay .lds-ripple { margin-top: 0 }
