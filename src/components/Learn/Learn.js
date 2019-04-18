@@ -107,7 +107,7 @@ class Learn extends Component{
     return (
       <div>
         <h3>{this.getResponseText()}</h3>
-        <h2>Translate the word:</h2><span>{this.context.nextWord ? this.context.nextWord.nextWord : null}</span>
+        <h2>Translate the word:</h2><span>{this.context.nextWord ?  this.state.onResults ? this.context.currWord.nextWord : this.context.nextWord.nextWord : null}</span>
         {/* <h2>Translate the word:</h2><span>{this.generateCurrentWord()}</span> */}
         <div className="DisplayScore">
           <p>Your total score is: {this.context.nextWord ? this.context.nextWord.totalScore : null}</p>
