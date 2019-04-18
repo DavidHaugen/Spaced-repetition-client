@@ -3,26 +3,38 @@
   "name": "spaced-repetition-client",
   "alias": "spaced-repetition",
   "routes": [
-      {
-        "src": "^/static/(.*)",
-        "dest": "/static/$1"
-      },
-      {
-        "src": "^/favicon.ico$",
-        "dest": "/favicon.ico"
-      },
-      {
-        "src": "^/manifest.json$",
-        "dest": "/manifest.json"
-      },
-      {
-        "src": "^/site.webmanifest.json$",
-        "dest": "/site.webmanifest.json"
-      },
-      {
-        "src": ".*",
-        "dest": "/index.html"
-      },
-      {"src": "^/favicon.ico$", "dest": "/favicon.ico"}
+    {
+      "src": "^/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "^/favicon.ico$",
+      "dest": "/favicon.ico"
+    },
+    {
+      "src": "^/manifest.json$",
+      "dest": "/manifest.json"
+    },
+    {
+      "src": "^/site.webmanifest.json$",
+      "dest": "/site.webmanifest.json"
+    },
+    {
+      "src": "^/img/(.*)",
+      "dest": "/img/$1"
+    },
+    {
+      "src": ".*",
+      "dest": "/index.html"
+    },
+    { "src": "/asset-manifest.json", "dest": "/asset-manifest.json" },
+    { "src": "/manifest.json", "dest": "/manifest.json", "headers": {"content-type": "application/json"} },
+    { "src": "/precache-manifest.(.*)", "dest": "/precache-manifest.$1" },
+    {
+      "src": "/service-worker.js",
+      "headers": { "cache-control": "s-maxage=0" },
+      "dest": "/service-worker.js"
+    },
+    { "src": "/favicon.ico", "dest": "/favicon.ico" }
   ]
 }
