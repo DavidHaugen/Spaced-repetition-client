@@ -62,7 +62,11 @@ class Learn extends Component{
     const el = document.getElementById('feedback-overlay');
     el.classList.remove('hidden');
 
-    setTimeout(() => {el.classList.add('hidden')}, 5000);
+    setTimeout(() => {el.classList.add('hidden')}, 2500);
+  }
+
+  clearFeedback() {
+    document.getElementById('feedback-overlay').classList.add('hidden');
   }
 
   getResponseText() {
@@ -115,18 +119,18 @@ class Learn extends Component{
   render(){
     return (
       <div className="learn-page">
-        <h3 id="feedback-overlay" className="hidden">{this.getResponseText()}</h3>
+        <h3 id="feedback-overlay" className="hidden" onClick={this.clearFeedback}>{this.getResponseText()}</h3>
         <h2>Translate the word:</h2><span>{this.context.nextWord ?  this.state.onResults ? this.context.currWord.nextWord : this.context.nextWord.nextWord : null}</span>
         {/* <h2>Translate the word:</h2><span>{this.generateCurrentWord()}</span> */}
         <div className="DisplayScore">
           <p>Your total score is: {this.context.nextWord ? this.context.nextWord.totalScore : null}</p>
         </div>
         <div className="DisplayFeedback">
-          <p>{this.getResponseFeedback()}</p>
+          <p className={this.state.onResults ? '' : 'hidden'}>{this.getResponseFeedback()}</p>
         </div>
         <form onSubmit={this.submitForm}>
-          <label htmlFor="learn-guess-input">What's the translation for this word?</label>
-          <input id="learn-guess-input" name="userinput" type="text" required={this.state.onResults ? false : true} ></input>
+          <label htmlFor="learn-guess-input" className={this.state.onResults ? 'hidden' : ''}>What's the translation for this word?</label>
+          <input id="learn-guess-input" name="userinput" type="text" required={this.state.onResults ? false : true} className={this.state.onResults ? 'hidden' : ''}></input>
           <button className="btn" type="submit">{this.getButtonText()}</button>
           {/* {this.generateButton()} */}
         </form>
