@@ -23,8 +23,15 @@ class RegistrationRoute extends Component {
   }
 
   render() {
-    const jsx = (
-      <section className="registration-container">
+    let formClassname = 'registration-container';
+    let loaderClassname = '';
+
+    if(this.state.loading) formClassname += ' hidden';
+    if(!this.state.loading) loaderClassname += ' hidden';
+
+    return <>
+      <Loader className={loaderClassname} />
+      <section className={formClassname}>
         <div className='tagline'>
           <p>Practice learning a language with the spaced repetition revision technique.</p>
         </div>
@@ -33,9 +40,7 @@ class RegistrationRoute extends Component {
           onRegistrationSuccess={this.handleRegistrationSuccess}
         />
       </section>
-    );
-
-    return this.state.loading ? <Loader /> : jsx;
+    </>;
   }
 }
 
