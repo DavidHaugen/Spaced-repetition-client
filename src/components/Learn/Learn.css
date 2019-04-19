@@ -96,13 +96,18 @@
   opacity: 1;
 }
 
+#loading-overlay .lds-ripple { margin-top: 0 }
+
+#feedback-overlay {
+  outline: none;
+}
+
 #feedback-overlay.invisible {
   pointer-events: none;
   opacity: 0;
   transition: all .5s;
 }
 
-#loading-overlay .lds-ripple { margin-top: 0 }
 
 
 @media only screen and (max-width: 425px) {

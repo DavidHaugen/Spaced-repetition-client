@@ -35,6 +35,7 @@ class LoginForm extends Component {
         this.props.onLoginSuccess()
       })
       .catch(res => {
+        console.log(res.error);
         this.props.toggleLoading();
         this.setState({ error: res.error })
       })

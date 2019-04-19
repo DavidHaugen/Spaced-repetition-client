@@ -25,16 +25,21 @@ class LoginRoute extends Component {
   }
 
   render() {
-    const jsx = (
-      <section className="login-container">
+    let formClassname = 'login-container';
+    let loaderClassname = '';
+
+    if(this.state.loading) formClassname += ' hidden';
+    if(!this.state.loading) loaderClassname += ' hidden';
+
+    return <>
+      <Loader className={loaderClassname} />
+      <section className={formClassname}>
         <LoginForm
           toggleLoading={this.toggleLoading}
           onLoginSuccess={this.handleLoginSuccess}
         />
       </section>
-    );
-
-    return this.state.loading ? <Loader /> : jsx;
+    </>;
   }
 }
 

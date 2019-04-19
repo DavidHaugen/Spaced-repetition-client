@@ -16,6 +16,7 @@ class Learn extends Component{
     super(props);
     this.guessInput = React.createRef();
     this.submitForm = this.submitForm.bind(this);
+    this.goNext = this.goNext.bind(this);
   }
 
   static contextType = UserContext
@@ -39,6 +40,7 @@ class Learn extends Component{
 
     if(this.state.onResults){
       this.setState({onResults: !this.state.onResults})
+      setTimeout(() => document.getElementById('learn-guess-input').focus(), 250);
     } else {
     this.context.setCurrWord(this.context.nextWord)
     this.context.setGuess(e.target.userinput.value)
@@ -56,6 +58,7 @@ class Learn extends Component{
       .then(json => {
         this.context.setNextWord(json);
         this.showFeedback();
+        document.getElementById('feedback-overlay').focus();
         this.setState({loading: false});
         document.getElementById('learn-guess-input').value = '';
       });
@@ -71,6 +74,7 @@ class Learn extends Component{
 
   clearFeedback() {
     document.getElementById('feedback-overlay').classList.add('invisible');
+    document.getElementsByClassName('btn')[0].focus();
   }
 
   getResponseText() {
@@ -120,12 +124,18 @@ class Learn extends Component{
     }
   }
 
+  goNext(e) {
+    if(e.key === 'Enter' || e.key === ' ') {
+      this.clearFeedback();
+    }
+  }
+
   render(){
     return (
-      <div className="learn-page" >
+      <div className="learn-page">
         {this.state.loading ? <div id="loading-overlay"><Loader /></div> : ''}
         <h2>Translate the word:</h2><span>{this.context.nextWord ?  this.state.onResults ? this.context.currWord.nextWord : this.context.nextWord.nextWord : null}</span>
-        <h3 id="feedback-overlay" className="invisible" onClick={this.clearFeedback} aria-live="polite">{this.getResponseText()}</h3>
+        <h3 id="feedback-overlay" tabIndex="0" onKeyPress={this.goNext} className="invisible" onClick={this.clearFeedback} aria-live="polite">{this.getResponseText()}</h3>
         <div className="DisplayScore">
           <p>Your total score is: {this.context.nextWord ? this.context.nextWord.totalScore : null}</p>
         </div>
