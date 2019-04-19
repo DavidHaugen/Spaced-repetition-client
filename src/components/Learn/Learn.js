@@ -14,7 +14,7 @@ class Learn extends Component{
 
   constructor(props) {
     super(props);
-
+    this.guessInput = React.createRef();
     this.submitForm = this.submitForm.bind(this);
   }
 
@@ -65,9 +65,9 @@ class Learn extends Component{
   showFeedback() {
     const el = document.getElementById('feedback-overlay');
     el.classList.remove('invisible');
-
     setTimeout(() => {el.classList.add('invisible')}, 2500);
   }
+
 
   clearFeedback() {
     document.getElementById('feedback-overlay').classList.add('invisible');
@@ -122,7 +122,7 @@ class Learn extends Component{
 
   render(){
     return (
-      <div className="learn-page">
+      <div className="learn-page" >
         {this.state.loading ? <div id="loading-overlay"><Loader /></div> : ''}
         <h2>Translate the word:</h2><span>{this.context.nextWord ?  this.state.onResults ? this.context.currWord.nextWord : this.context.nextWord.nextWord : null}</span>
         <h3 id="feedback-overlay" className="invisible" onClick={this.clearFeedback} aria-live="polite">{this.getResponseText()}</h3>
@@ -134,11 +134,11 @@ class Learn extends Component{
         </div>
         <form onSubmit={this.submitForm}>
           <label htmlFor="learn-guess-input" className={this.state.onResults ? 'hidden' : ''}>What's the translation for this word?</label>
-          <input id="learn-guess-input" name="userinput" type="text" required={this.state.onResults ? false : true} className={this.state.onResults ? 'hidden' : ''} maxLength="25"></input>
+          <input autoFocus={true} id="learn-guess-input" name="userinput" type="text" required={this.state.onResults ? false : true} className={this.state.onResults ? 'hidden' : ''} maxLength="25"></input>
           <button className="btn" type="submit">{this.getButtonText()}</button>
         </form>
-        <p className="word-count">You have answered this word correctly {this.context.nextWord ? this.context.nextWord.wordCorrectCount : null} times.</p>
-        <p className="word-count">You have answered this word incorrectly {this.context.nextWord ? this.context.nextWord.wordIncorrectCount : null} times.</p>
+        <p className="word-count">You have answered this word correctly {this.state.onResults ? this.context.currWord.wordCorrectCount : this.context.nextWord ? this.context.nextWord.wordCorrectCount : null} times.</p>
+        <p className="word-count">You have answered this word incorrectly {this.state.onResults ? this.context.currWord.wordIncorrectCount : this.context.nextWord ? this.context.nextWord.wordIncorrectCount : null} times.</p>
       </div>
     );
   }
